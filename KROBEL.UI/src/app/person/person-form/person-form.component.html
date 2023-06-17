@@ -1,0 +1,44 @@
+<form class="gap-3" novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+  <input type="hidden" name="id" [value]="service.formData.id">
+  <div class="form-row d-flex gap-3 custom-group custom-group-mobile">
+    <div class="form-group custom-group">
+      <label>First name:</label>
+      <input class="form-control form-control-lg" placeholder="First Name" name="firstName" #personFirstName="ngModel" [(ngModel)]="service.formData.firstName" required pattern="[A-Za-z]+" [class.invalid]="personFirstName.invalid && personFirstName.touched">
+      <div class="error-message" *ngIf="personFirstName.invalid && personFirstName.touched">Please enter a valid first name.</div>
+    </div>
+    <div class="form-group custom-group">
+      <label>Last name:</label>
+      <input class="form-control form-control-lg" placeholder="Last Name" name="lastName" #personLastName="ngModel" [(ngModel)]="service.formData.lastName" required pattern="[A-Za-z]+" [class.invalid]="personLastName.invalid && personLastName.touched">
+      <div class="error-message" *ngIf="personLastName.invalid && personLastName.touched">Please enter a valid last name.</div>
+    </div>
+  </div>
+ <div class="form-row d-flex gap-3 custom-group custom-group-mobile">
+  <div class="form-group custom-group">
+    <label>Birth date:</label>
+    <input class="form-control form-control-lg" type="date" name="birthDate" #personBirthDate="ngModel" [ngModel]="formatBirthDate(service.formData.birthDate)" (ngModelChange)="updateBirthDate($event)" required [class.invalid]="personBirthDate.invalid && personBirthDate.touched">
+    <div class="error-message" *ngIf="personBirthDate.invalid && personBirthDate.touched">Please enter a valid birth date.</div>
+  </div>
+  <div class="form-group custom-group">
+    <label>Gender:</label>
+    <select class="form-control form-control-lg" name="gender" #personGender="ngModel" [(ngModel)]="service.formData.gender" required [class.invalid]="personGender.invalid && personGender.touched">
+      <option value="" disabled selected>Select gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+    <div class="error-message" *ngIf="personGender.invalid && personGender.touched">Please select a gender.</div>
+  </div>
+ </div>
+  <div class="form-group ">
+    <label>Email:</label>
+    <input class="form-control form-control-lg" type="email" name="email" #personEmail="ngModel" [(ngModel)]="service.formData.email" required [class.invalid]="personEmail.invalid && personEmail.touched">
+    <div class="error-message" *ngIf="personEmail.invalid && personEmail.touched">Please enter a valid email address.</div>
+  </div>
+  <div class="form-group">
+    <label>Phone number:</label>
+    <input class="form-control form-control-lg" placeholder="Phone Number" name="phoneNumber" #personPhoneNumber="ngModel" [(ngModel)]="service.formData.phoneNumber" required pattern="[0-9]+" [class.invalid]="personPhoneNumber.invalid && personPhoneNumber.touched">
+    <div class="error-message" *ngIf="personPhoneNumber.invalid && personPhoneNumber.touched">Please enter a valid phone number.</div>
+  </div>
+  <div class="form-group d-grid mt-3">
+    <button type="submit" class="btn btn-primary btn-block" [disabled]="form.invalid">SUBMIT</button>
+  </div>
+</form>

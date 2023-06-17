@@ -1,0 +1,42 @@
+.form-group label {
+  color: gray;
+}
+
+.form-group input {
+  font-weight: 500;
+}
+
+.form-group input::placeholder {
+  color: #c0bdbd;
+  font-weight: 300;
+}
+
+thead th {
+  font-weight: 400;
+}
+
+table tbody tr:hover {
+  background-color: #fffbf2;
+  cursor: pointer;
+}
+
+input.invalid {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+}
+
+.custom-group {
+  width: 100%;
+  min-width: 200px;
+}
+
+@media screen and (max-width: 1024px) {
+  .custom-group-mobile {
+    flex-direction: column;
+    width: 100% !important;
+  }
+}
+

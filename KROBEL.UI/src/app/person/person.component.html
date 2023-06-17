@@ -1,0 +1,36 @@
+<div class="jumbotron py-3">
+  <h1 class="display-4 text-center">Person</h1>
+</div>
+<div class="row gap-5">
+  <div class="col-md-6 custom-group-mobile">
+    <h5>Create-Update person</h5>
+    <app-person-form></app-person-form>
+  </div>
+  <div class="col-md-5">
+    <h5>List person</h5>
+    <table class="table custom-group-mobile">
+      <thead class="thead-light">
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Birth Date</th>
+          <th>Phone Number</th>
+          <th>Email</th>
+          <th>Gender</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of service.list">
+          <td (click)="populateForm(p)">{{p.firstName}}</td>
+          <td (click)="populateForm(p)">{{p.lastName}}</td>
+          <td (click)="populateForm(p)">{{ formatBirthDate(p.birthDate) }}</td>
+          <td (click)="populateForm(p)">{{p.phoneNumber}}</td>
+          <td (click)="populateForm(p)">{{p.email}}</td>
+          <td (click)="populateForm(p)">{{p.gender}}</td>
+          <td><i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(p.id)"></i></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
